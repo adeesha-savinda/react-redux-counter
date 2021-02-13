@@ -8,8 +8,6 @@ import { Provider } from 'react-redux';
 
 import thunk from 'redux-thunk';
 
-
-
 const logger = store => {
   return next => {
     return action => {
