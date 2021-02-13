@@ -1,3 +1,5 @@
+import { updateObject } from '../store/utility';
+
 const initialState = {
     results: []
 };
@@ -5,16 +7,10 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'STORE':
-            return {
-                ...state,
-                // concat is used instead of push - in an immutable way
-                results: state.results.concat({ id: new Date(), value: action.counter }),
-            }
+            // concat is used instead of push - in an immutable way
+            return updateObject(state, { results: state.results.concat({ id: new Date(), value: action.counter }) });
         case 'DELETE':
-            return {
-                ...state,
-                results: state.results.filter(result => result.id !== action.resultId),
-            }
+            return updateObject(state, { results: state.results.filter(result => result.id !== action.resultId) })
         default:
             return state;
     }

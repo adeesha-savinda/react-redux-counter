@@ -6,6 +6,8 @@ import reducer from './store/index';
 
 import { Provider } from 'react-redux';
 
+import thunk from 'redux-thunk';
+
 
 
 const logger = store => {
@@ -21,7 +23,7 @@ const logger = store => {
 
 // This is used to support redux browser extension
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 
 const App = () => {
